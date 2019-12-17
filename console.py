@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """This is the console for AirBnB"""
 import cmd
 from models import storage
@@ -38,11 +38,24 @@ class HBNBCommand(cmd.Cmd):
             SyntaxError: when there is no args given
             NameError: when there is no object taht has the name
         """
+        dot = "."
         try:
             if not line:
                 raise SyntaxError()
             my_list = line.split(" ")
             obj = eval("{}()".format(my_list[0]))
+            params = my_list[1:]
+            for params_name in params:
+                params_value = params_name.split('=')
+                if params_value[1].startswith('"') \
+                        and params_value[1].endswith('"'):
+                    params_value[1] = params_value[1].replace('"', '')
+                    params_value[1] = params_value[1].replace("_", " ")
+                elif dot in params_value[1]:
+                    params_value[1] = float(params_value[1])
+                else:
+                    params_value[1] = int(params_value[1])
+                setattr(obj, params_value[0], params_value[1])
             obj.save()
             print("{}".format(obj.id))
         except SyntaxError:
