@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """This is the console for AirBnB"""
 import cmd
 from models import storage
