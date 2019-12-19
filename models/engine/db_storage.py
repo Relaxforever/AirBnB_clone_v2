@@ -12,6 +12,7 @@ from models.review import Review
 from sqlalchemy.orm import sessionmaker, scoped_session
 from os import getenv
 
+
 class DBStorage:
     """conect to databases"""
     __engine = None
@@ -59,5 +60,6 @@ class DBStorage:
     def reload(self):
 
         Base.metadata.create_all(self.__engine)
-        self.__session = sessionmaker(bind=self.__engine, expire_on_commit=False)
+        self.__session = sessionmaker(bind=self.__engine,
+                                      expire_on_commit=False)
         self.__session = scoped_session(self.__session)
