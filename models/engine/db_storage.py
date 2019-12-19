@@ -47,17 +47,21 @@ class DBStorage:
         return dict_table
 
     def new(self, obj):
+        """creates a new object"""
         if obj:
             self.__session.add(obj)
 
     def save(self):
+        """ saves the instance"""
         self.__session.commit()
 
     def delete(self, obj=None):
+        """" deletes the object"""
         if obj:
             self.__session.delete(obj)
 
     def reload(self):
+        """reloads the objects"""
 
         Base.metadata.create_all(self.__engine)
         self.__session = sessionmaker(bind=self.__engine,
