@@ -20,7 +20,7 @@ def do_pack():
         return tgz
 
 
-env.host = ['34.74.97.231', '35.227.41.101']
+env.hosts = ['34.74.97.231', '35.227.41.101']
 
 
 def do_deploy(archive_path):
