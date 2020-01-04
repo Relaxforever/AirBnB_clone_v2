@@ -44,9 +44,10 @@ def do_deploy(archive_path):
     except Exception:
         return False
 
-    def deploy():
-        versions = do_pack()
-        if versions is False:
-            return False
-        else:
-            return do_deploy(versions)
+
+def deploy():
+    versions = do_pack()
+    if versions is False:
+        return False
+    else:
+        return do_deploy(versions)
