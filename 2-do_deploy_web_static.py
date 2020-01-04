@@ -26,8 +26,10 @@ def do_deploy(archive_path):
     """ distributes an archive to the web servers """
     if not path.exists(archive_path):
         return False
-    splitted = archive_path.split("/")
-    noexten = path.splitext(splitted[1])[0]
+    """splitted = archive_path.split("/")
+    noexten = path.splitext(splitted[1])[0]"""
+    splitted = archive_path[9:]
+    noexten = archive_path[9:-4]
 
     try:
         put(archive_path, '/tmp/')
