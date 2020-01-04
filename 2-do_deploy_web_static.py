@@ -26,22 +26,20 @@ def do_deploy(archive_path):
     """ distributes an archive to the web servers """
     if not path.exists(archive_path):
         return False
-    """splitted = archive_path.split("/")
-    noexten = path.splitext(splitted[1])[0]"""
-    splitted = archive_path[9:]
-    noexten = archive_path[9:-4]
+    splitted = archive_path.split("/")
+    noexten = path.splitext(splitted[1])[0]
 
     try:
-        put(archive_path, "/tmp/")
-        run("mkdir -p /data/web_static/releases/{}".format(noexten))
-        run("tar -xzf /tmp/{} -C /data/web_static/releases/{}/"
-            .format(splitted, noexten))
-        run("rm /tmp/{}".format(splitted))
-        run("mv /data/web_static/releases/{}/web_static/* \
-        /data/web_static/releases/{}/".format(noexten, noexten))
+        put(archive_path, '/tmp/')
+        run('mkdir -p /data/web_static/releases/{}'.format(noexten))
+        run('tar -xzf /tmp/{} -C\
+        /data/web_static/releases/{}/'.format(splitted, noexten))
+        run('rm /tmp/{}'.format(splitted))
+        run('mv /data/web_static/releases/{}/web_static/* \
+        /data/web_static/releases/{}/'.format(noexten, noexten))
         run("rm -rf /data/web_static/releases/{}/web_static".format(noexten))
-        run("rm -rf /data/web_static/current")
-        run("ln -s /data/web_static/releases/{}/\
-         /data/web_static/current".format(noexten))
+        run('rm -rf /data/web_static/current')
+        run('ln -s /data/web_static/releases/{}/\
+         /data/web_static/current'.format(noexten))
     except Exception:
         return False
