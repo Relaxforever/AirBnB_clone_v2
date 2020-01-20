@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from flask import Flask
+from flask import Flask, render_template
 app = Flask(__name__)
 
 
@@ -33,6 +33,16 @@ def python_text(text):
 def number(n):
     """prints a number if there is one"""
     return '{} is a number'.format(n)
+
+
+@app.route('/number_template/<int:n>', strict_slashes=False)
+def number_template(n):
+    """display page if only is integer"""
+    return render_template('5-number.html', n=n)
+
+
+@app.route('/number_template/<int:n>', strict_slashes=False)
+def
 
 
 app.run(host='0.0.0.0', port="5000")
