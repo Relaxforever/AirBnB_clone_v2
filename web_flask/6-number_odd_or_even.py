@@ -45,9 +45,11 @@ def number_template(n):
 def even_or_odd(n):
     """check if a number is even or odd"""
     if int(n) % 2 == 0:
-        return render_template('6-number_odd_or_even.html', n=n, even_or_odd="even")
+        return render_template('6-number_odd_or_even.html',
+                               n=n, even_or_odd="even")
     else:
-        return render_template('6-number_odd_or_even.html', n=n, even_or_odd="odd")
+        return render_template('6-number_odd_or_even.html',
+                               n=n, even_or_odd="odd")
 
 
 app.run(host='0.0.0.0', port="5000")
