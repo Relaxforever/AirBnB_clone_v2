@@ -8,5 +8,6 @@ def hello_world():
     """ Prints hello When someone enters / """
     return 'Hello HBNB!'
 
-if __name__ = "__main__":
+
+if __name__ == "__main__":
     app.run(debug=True)
