@@ -41,10 +41,10 @@ def number_template(n):
     return render_template('5-number.html', n=n)
 
 
-@app.route('/number_odd_or_even/<n>', strict_slashes=False)
+@app.route('/number_odd_or_even/<int:n>', strict_slashes=False)
 def even_or_odd(n):
     """check if a number is even or odd"""
-    if int(n) % 2 == 0:
+    if n % 2 == 0:
         return render_template('6-number_odd_or_even.html',
                                n=n, even_or_odd="even")
     else:
