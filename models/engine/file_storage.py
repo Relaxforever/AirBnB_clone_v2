@@ -25,7 +25,13 @@ class FileStorage:
         Return:
             returns a dictionary of __object
         """
-        return self.__objects
+        if cls is None:
+            return self.__objects
+        complete_dict = {}
+        for key, value in self.__objects.items():
+            if cls.__name__ in key:
+                complete_dict[key] = value
+        return complete_dict
 
     def new(self, obj):
         """sets __object to given obj
@@ -62,3 +68,7 @@ class FileStorage:
             key = "{}.{}".format(type(obj).__name__, obj.id)
             del self.__objects[key]
             self.save()
+
+    def close(self):
+        """call reload() method for deserializing the JSON file to objects"""
+        self.reload()
