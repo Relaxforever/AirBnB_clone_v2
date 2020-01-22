@@ -27,9 +27,13 @@ class FileStorage:
         """
         if cls is None:
             return self.__objects
+        if type(cls) == str:
+            obj_cls = cls
+        else:
+            obj_cls = cls.__name__
         complete_dict = {}
         for key, value in self.__objects.items():
-            if cls.__name__ in key:
+            if obj_cls in key:
                 complete_dict[key] = value
         return complete_dict
 
