@@ -15,7 +15,7 @@ def finish_session(NaN):
 def states_list():
     """ Prints hello When someone enters / """
     return render_template('7-states_list.html',
-                           dict_states=storage.all(State))
+                           dict_states=storage.all("State"))
 
 
 if __name__ == "__main__":
