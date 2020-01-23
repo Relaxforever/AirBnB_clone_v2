@@ -11,6 +11,13 @@ def finish_session(NaN):
     storage.close()
 
 
+@app.route('/states', strict_slashes=False)
+def states_list():
+    """ Prints hello When someone enters / """
+    return render_template('7-states_list.html',
+                           dict_states=storage.all("State"))
+
+
 @app.route('/states/<id>', strict_slashes=False)
 def states_all(id):
     """ Prints hello When someone enters / """
