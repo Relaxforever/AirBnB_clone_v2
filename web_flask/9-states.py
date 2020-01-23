@@ -11,12 +11,17 @@ def finish_session(NaN):
     storage.close()
 
 
-@app.route('/states', strict_slashes=False)
 @app.route('/states/<id>', strict_slashes=False)
-def states_all():
+def states_all(id):
     """ Prints hello When someone enters / """
-    return render_template('8-cities_by_states.html',
-                           dict_states=storage.all("State"))
+    all_st = storage.all("State")
+    new_s = None
+    for key, value in all_st.items():
+        if value.id == id:
+            new_s = value
+            break
+    return render_template('9-states.html',
+                           dict_states=new_s)
 
 
 if __name__ == "__main__":
